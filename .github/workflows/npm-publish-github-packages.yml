@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
-      - run: echo "@pedrovasher:registry=https://npm.pkg.github.com/" >> ~/.npmrc
+      - run: echo "@PedroVasHer:registry=https://npm.pkg.github.com/" >> ~/.npmrc
       - run: echo "//https://npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
       - run: npm publish
         env:
