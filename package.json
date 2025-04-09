@@ -1,5 +1,5 @@
 {
-  "name": "@PedroVasHer/serviceA",
+  "name": "@PedroVasHer/servicea",
   "version": "1.0.0",
   "description": "Parent dependency with simple console log",
   "main": "index.js",
