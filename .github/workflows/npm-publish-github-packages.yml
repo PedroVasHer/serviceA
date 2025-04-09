@@ -31,8 +31,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: https://registry.npmjs.org/
-      - run: echo "//https://registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          registry-url: https://npm.pkg.github.com/
+      - run: echo "@pedrovasher:registry=https://npm.pkg.github.com/" >> ~/.npmrc
+      - run: echo "//https://npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
