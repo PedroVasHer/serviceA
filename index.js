@@ -6,7 +6,6 @@ const app = express();
 // routes for the other service are:
 // .../services/serviceB
 // .../services/serviceC
-//
 app.use('/services', serviceB);
 
 app.get('/', (req, res) => {
