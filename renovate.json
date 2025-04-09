@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "packageRules": [
+    {
+      "packageNames": ["service-b"],
+      "updateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
+      "packageNames": ["service-c"],
+      "updateTypes": ["minor", "patch"],
+      "automerge": true
+    }
+  ],
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "Dependency Dashboard"
+}
