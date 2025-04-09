@@ -4,15 +4,12 @@
   ],
   "packageRules": [
     {
-      "packageNames": ["service-b"],
+      "packageNames": ["@PedroVasHer/serviceB"],
       "updateTypes": ["minor", "patch"],
-      "automerge": true
+      "automerge": true,
+      "branchPrefix": "feature/"
     },
-    {
-      "packageNames": ["service-c"],
-      "updateTypes": ["minor", "patch"],
-      "automerge": true
-    }
+  
   ],
   "dependencyDashboard": true,
   "dependencyDashboardTitle": "Dependency Dashboard"
