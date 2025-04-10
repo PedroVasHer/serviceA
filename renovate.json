@@ -16,13 +16,6 @@
       "prCreation": "inmediate"
     }
   ],
-  "hostRules" : [
-    {
-      "hostType": "npm",
-      "matchHost": "npm.pkg.github.com",
-      "token":"${{ secrets.NPM_TOKEN }}"
-    }
-  ],
   "dependencyDashboard": true,
   "dependencyDashboardTitle": "Dependency Dashboard"
 }
