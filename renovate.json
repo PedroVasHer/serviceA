@@ -6,9 +6,10 @@
     {
       "packageNames": ["@PedroVasHer/serviceB"],
       "updateTypes": ["minor", "patch"],
-      "automerge": true,
-      "branchPrefix": "feature/"
-    },
+      "automerge": false,
+      "branchPrefix": "feature/",
+      "prCreation": "inmediate"
+    }
   
   ],
   "dependencyDashboard": true,
