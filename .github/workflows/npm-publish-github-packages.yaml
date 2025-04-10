@@ -78,7 +78,7 @@ jobs:
       - run:
           echo "@PedroVasHer:registry=https://npm.pkg.github.com/" >> ~/.npmrc
       - run:
-          echo "//https://npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN}}" > ~/.npmrc
+          echo "//https://npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN}}" >> ~/.npmrc
       - name: Increase the version to be published
         run: npm version patch
       - name: Publish to GitHub Packages
