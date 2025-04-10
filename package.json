@@ -19,6 +19,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0",
-    "@pedrovasher/serviceb": "^1.0.2"
+    "@pedrovasher/serviceb": "1.0.2"
   }
 }
