@@ -1,7 +1,7 @@
 {
   "name": "@PedroVasHer/servicea",
-  "version": "0.0.0-SEMANTIC-RELEASE",
-  "description": "Parent dependency with simple console log",
+  "version": "0.76",
+  "description": "",
   "main": "index.js",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
