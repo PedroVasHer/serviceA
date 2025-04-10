@@ -47,6 +47,17 @@ jobs:
           npm version minor
           git push origin main --follow-tags
 
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.new_version }}
+          release_name: Release v${{ steps.version.outputs.new_version }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+
   publish-gpr:
     needs: [build, version]
     runs-on: ubuntu-latest
