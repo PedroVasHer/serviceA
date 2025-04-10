@@ -16,12 +16,13 @@
       "prCreation": "inmediate"
     }
   ],
-  "dependencyDashboard": true,
-  "dependencyDashboardTitle": "Dependency Dashboard",
   "hostRules" : [
     {
       "hostType": "npm",
-      "matchHost": "registry.npmjs.org"
+      "matchHost": "npm.pkg.github.com",
+      "token":"${{ secrets.NPM_TOKEN }}"
     }
-  ]
+  ],
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "Dependency Dashboard"
 }
