@@ -31,8 +31,6 @@ jobs:
 
   version:
     runs-on: ubuntu-latest
-    outputs:
-      new_version: ${{ steps.version.outputs.new_version }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,15 +44,14 @@ jobs:
           git config user.name "${{github.actor}}"
           git config user.email "${{github.actor}}@users.noreply.github.com"
           git pull --rebase origin main
-          new_version=$(npm version minor)
-          echo "::set-output name=new_version::${new_version}"
+          npm version minor
           git push origin main --follow-tags
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
         with:
-          tag_name: v${{ steps.version.outputs.new_version }}
-          release_name: Release v${{ steps.version.outputs.new_version }}
+          tag_name: v${{ steps.version.outputs.release }}
+          release_name: Release v${{ steps.version.outputs.release }}
           draft: false
           prerelease: false
         env:
