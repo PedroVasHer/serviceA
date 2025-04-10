@@ -68,7 +68,7 @@ jobs:
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
-          
+
       - name: Set Git Identity
         run: |
           git config user.name "claudiafm97"
@@ -79,6 +79,7 @@ jobs:
           echo "//https://npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN}}" > ~/.npmrc
       - name: Increase the version to be published
         run: npm version patch
-      - run: npm publish
+      - name: Publish to GitHub Packages
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
