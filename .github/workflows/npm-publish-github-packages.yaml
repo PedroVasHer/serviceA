@@ -41,8 +41,8 @@ jobs:
 
       - name: Increment version and push tagv
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "${{github.actor}}"
+          git config user.email "${{github.actor}}@users.noreply.github.com"
           npm version minor
           git push origin main --follow-tags
 
@@ -61,8 +61,8 @@ jobs:
 
       - name: Set Git Identity
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "${{github.actor}}"
+          git config user.email "${{github.actor}}@users.noreply.github.com"
       - run:
           echo "@PedroVasHer:registry=https://npm.pkg.github.com/" >> ~/.npmrc
       - run:
