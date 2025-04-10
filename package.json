@@ -19,6 +19,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0",
-    "serviceB": "git+https://github.com/PedroVasHer/serviceB.git"
+    "@pedrovasher/serviceb": "^1.0.2"
   }
 }
