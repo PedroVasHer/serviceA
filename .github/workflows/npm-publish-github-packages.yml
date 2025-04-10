@@ -19,9 +19,35 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+  
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Increment version and push tag
+        id: increment_version
+        uses: anothrNick/github-tag-action@v1.37.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          default_bump: patch
+          tag_prefix: "v"
+          commit_message: "ci: increment version to {{version}}"
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.increment_version.outputs.new_tag }}
+          release_name: Release ${{ steps.increment_version.outputs.new_tag }}
+          body: "Release of version ${{ steps.increment_version.outputs.new_tag }}"
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-gpr:
-    needs: build
+    needs: [build, version]
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -37,3 +63,5 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+          name: Node.js Package
