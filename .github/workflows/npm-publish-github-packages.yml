@@ -70,10 +70,9 @@ jobs:
       - run:
           echo "@PedroVasHer:registry=https://npm.pkg.github.com/" >> ~/.npmrc
       - run:
-          echo "//https://npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN
-          }}" > ~/.npmrc
+          echo "//https://npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN}}" > ~/.npmrc
+      - name: Increase the version to be published
+        run: npm version patch
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
-          name: Node.js Package
