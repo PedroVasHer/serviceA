@@ -4,7 +4,7 @@
   ],
   "packageRules": [
     {
-      "packageNames": ["serviceb"],
+      "matchPackageNames": ["@pedrovasher/serviceb"],
       "updateTypes": ["minor", "patch"],
       "automerge": false,
       "branchPrefix": "feature/",
