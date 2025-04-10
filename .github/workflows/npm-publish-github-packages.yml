@@ -19,28 +19,30 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-  
+
   version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 20
       - name: Increment version and push tag
-        id: increment_version
-        uses: anothrNick/github-tag-action@v1.38.0
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: patch
-          tag_prefix: "v"
-          commit_message: "ci: increment version to {{version}}"
+          tag_prefix: 'v'
+          commit_message: 'ci: Increment version to {{version}}'
       - name: Create GitHub Release
-        uses: actions/create-release@v1
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ steps.increment_version.outputs.new_tag }}
-          release_name: Release ${{ steps.increment_version.outputs.new_tag }}
-          body: "Release of version ${{ steps.increment_version.outputs.new_tag }}"
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          release_name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: 'Release of version ${{ steps.tag_version.outputs.new_tag }}'
           draft: false
           prerelease: false
         env:
@@ -58,8 +60,11 @@ jobs:
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
-      - run: echo "@PedroVasHer:registry=https://npm.pkg.github.com/" >> ~/.npmrc
-      - run: echo "//https://npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+      - run:
+          echo "@PedroVasHer:registry=https://npm.pkg.github.com/" >> ~/.npmrc
+      - run:
+          echo "//https://npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN
+          }}" > ~/.npmrc
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
