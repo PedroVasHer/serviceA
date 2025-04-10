@@ -40,23 +40,11 @@ jobs:
           node-version: 20
 
       - name: Increment version and push tag
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v6.2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          default_bump: patch
-          tag_prefix: 'v'
-          commit_message: 'ci: Increment version to {{version}}'
-      - name: Create GitHub Release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: ${{ steps.tag_version.outputs.new_tag }}
-          release_name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: 'Release of version ${{ steps.tag_version.outputs.new_tag }}'
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          npm version minor
+          git push origin main --follow-tags
 
   publish-gpr:
     needs: [build, version]
@@ -73,8 +61,8 @@ jobs:
 
       - name: Set Git Identity
         run: |
-          git config user.name "claudiafm97"
-          git config user.email "claudiafer.molano97@gmail.com"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
       - run:
           echo "@PedroVasHer:registry=https://npm.pkg.github.com/" >> ~/.npmrc
       - run:
