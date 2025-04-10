@@ -36,11 +36,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      
-      - name: Set Git Identity
-        run: |
-          git config --global user.name "claudiafm97"
-          git config --global user.email "claudiafer.molano97@gmail.com"
 
       - name: Increment version and push tag
         id: tag_version
@@ -73,6 +68,11 @@ jobs:
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
+          
+      - name: Set Git Identity
+        run: |
+          git config user.name "claudiafm97"
+          git config user.email "claudiafer.molano97@gmail.com"
       - run:
           echo "@PedroVasHer:registry=https://npm.pkg.github.com/" >> ~/.npmrc
       - run:
