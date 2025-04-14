@@ -13,7 +13,9 @@
       ],
       "automerge": false,
       "branchPrefix": "feature/",
-      "prCreation": "inmediate"
+      "prCreation": "inmediate",
+      "respectLatest": false,
+      "ignoreUnstable": false
     }
   ],
   "dependencyDashboard": true,
